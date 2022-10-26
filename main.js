@@ -17,25 +17,55 @@ btnEquis.addEventListener('click', ()=>{
 
 
 function funcionMain(eleccion) {
-    console.log(eleccion)
 
     let sectores = Array.from(document.querySelectorAll('.sectores'))
-
-    // let uwu = {...sectores, ocupado:false}
-
+    // let uwu = {}
     // console.log(uwu)
-
     for (const iterator of sectores) {
 
-        if (iterator.innerText == '❌' ||  iterator.innerText == '⭕') {
-           iterator.onclick = ''
-        }else{
-            iterator.onclick = ()=>{
+        iterator.onclick = ()=>{
+            // console.log(iterator)
+            if (iterator.dataset.ocupado == 'true') {
+                console.log('kieto')
+            }else{
                 iterator.innerText = eleccion
-                funcionMain('❌')
+                iterator.dataset.ocupado = 'true'
 
-        }
+                let aprovado = false
 
+                if (!terminoElJuego(sectores)) {
+                    while (aprovado == false){
+    
+                        let random = Math.floor(Math.random() * 9)
+                        console.log(sectores[random].dataset.ocupado, sectores[random])
+    
+                        if (sectores[random].dataset.ocupado == 'false') {
+                            sectores[random].innerText = eleccionRival(eleccion)
+                            sectores[random].dataset.ocupado = 'true'
+                            return aprovado = true
+                        }
+                    }
+                }else{
+                    console.log('se acabo el juego')
+                }
+            }
         }
+    }    // }
+}
+
+
+function eleccionRival(eleccionJugador) {
+    if (eleccionJugador === '❌') {
+        return '⭕'
+    }else{
+        return '❌'
     }
 }
+// let sectores = Array.from(document.querySelectorAll('.sectores'))
+
+function terminoElJuego(sectores) {
+    let isEnd = sectores.every((a)=>a.dataset.ocupado == "true")
+    // console.log(isEnd)
+    return isEnd
+}
+
