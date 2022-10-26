@@ -1,0 +1,20 @@
+body{
+    background-color: rgb(61, 57, 57);
+}
+.container-ttt{
+    display: grid;
+    width: 500px;
+    height: 500px;
+    /* background-color: #121f3d; */
+    gap: 20px;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    padding: 20px;
+    border-radius: 20px;
+}
+
+.sectores{
+    background-color: #121f3d;
+    border: 2px solid white;
+    border-radius: 30px;
+}
