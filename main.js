@@ -35,18 +35,19 @@ function funcionMain(eleccion) {
                     while (aprovado == false){
 
                         let random = Math.floor(Math.random() * 9)
-                        // console.log(sectores[random].dataset.ocupado, sectores[random])
-    
+
                         if (sectores[random].dataset.ocupado == 'false') {
                             sectores[random].innerText = eleccionRival(eleccion)
                             sectores[random].dataset.ocupado = 'true'
                             aprovado = true
                         }
                     }
-                validarSiGano(sectores, eleccion)
+                    validarSiGano(sectores, eleccion)
                 }else{
+                    validarSiGano(sectores, eleccion)
                     console.log('se acabo el juego')
                 }
+                
                 
             }
         }
