@@ -2,16 +2,18 @@ const $ = (etiqueta) => document.querySelector(etiqueta)
 
 let btnCirculo = $('#circulo')
 let btnEquis = $('#equis')
-
+let sectores = Array.from(document.querySelectorAll('.sectores'))
 
 btnCirculo.addEventListener('click', ()=>{
     funcionMain(btnCirculo.innerText)
     btnEquis.disabled = true
+    quienInicia(sectores, btnCirculo.innerText)
 })
 
 btnEquis.addEventListener('click', ()=>{
     funcionMain(btnEquis.innerText)
     btnCirculo.disabled = true
+    quienInicia(sectores, btnEquis.innerText)
 })
 
 
@@ -51,6 +53,21 @@ function funcionMain(eleccion) {
         }
     }   
 }
+
+function quienInicia(sectores, eleccion) {
+    let primerIntento = Math.floor(Math.random()*2)
+    if (primerIntento == 1) {
+        let random = Math.floor(Math.random() * 9)
+        sectores[random].innerText = eleccionRival(eleccion)
+        sectores[random].dataset.ocupado = 'true'
+        console.log('inicia la maquina')
+    }else{
+     console.log('inicia tu')   
+    }
+}
+
+
+
 
 
 function eleccionRival(eleccionJugador) {
