@@ -1,5 +1,6 @@
 body{
     background-color: rgb(61, 57, 57);
+    display: flex;
 }
 .container-ttt{
     display: grid;
@@ -21,4 +22,31 @@ body{
     padding-top: 30px;
     text-align: center;
     font-size: 60px;
+}
+
+.mensaje-final{
+    position: absolute;
+    align-self: center;
+    right: 100px;
+    margin: auto;
+    display: flex;
+    width: 500px;
+    height: 200px;
+    border-radius: 20px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border: 2px solid black;
+}
+
+.ganador{
+    background-color: green;
+}
+
+.perdedor{
+    background-color: red;
+}
+
+.invisible{
+    display: none;
 }

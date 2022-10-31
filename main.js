@@ -22,14 +22,15 @@ function funcionMain(eleccion) {
     for (const iterator of sectores) {
         
         iterator.onclick = ()=>{
-
             if (iterator.dataset.ocupado == 'true') {
                 console.log('kieto')
             }else{
                 iterator.innerText = eleccion
                 iterator.dataset.ocupado = 'true'
-
+                console.log('dentro')
                 let aprovado = false
+
+                validarSiGano(sectores, eleccion)
 
                 if (!terminoElJuego(sectores)) {
                     while (aprovado == false){
@@ -43,9 +44,6 @@ function funcionMain(eleccion) {
                         }
                     }
                     validarSiGano(sectores, eleccion)
-                }else{
-                    validarSiGano(sectores, eleccion)
-                    console.log('se acabo el juego')
                 }
                 
                 
@@ -71,75 +69,123 @@ function terminoElJuego(sectores) {
 
 function validarSiGano(sectores, eleccionJugador) {
 
-    let uno = sectores[0].innerHTML
-    let dos = sectores[1].innerHTML
-    let tres = sectores[2].innerHTML
-    let cuatro = sectores[3].innerHTML
-    let cinco = sectores[4].innerHTML
-    let seis = sectores[5].innerHTML
-    let siete = sectores[6].innerHTML
-    let ocho = sectores[7].innerHTML
-    let nueve = sectores[8].innerHTML
+    let uno = sectores[0].innerText
+    let dos = sectores[1].innerText
+    let tres = sectores[2].innerText
+    let cuatro = sectores[3].innerText
+    let cinco = sectores[4].innerText
+    let seis = sectores[5].innerText
+    let siete = sectores[6].innerText
+    let ocho = sectores[7].innerText
+    let nueve = sectores[8].innerText
 
+    let termino = false
+    let victoria = false
+
+    //validaciones para saber si gano
 
     if (uno == dos && dos == tres && uno != "") {
         if (eleccionJugador == uno ){
             console.log('ganastes')
+            victoria = true
         }else{
             console.log('perdiste')
         }
+        termino = true
     }
+
     if (cuatro == cinco && cinco == seis && cuatro != "") {
         if (eleccionJugador == cuatro ){
             console.log('ganastes')
+            victoria = true
         }else{
             console.log('perdiste')
         }
+        termino = true
     }
+
     if (siete == ocho && ocho == nueve && siete != "") {
         if (eleccionJugador == siete ){
             console.log('ganastes')
+            victoria = true
         }else{
             console.log('perdiste')
         }
+        termino = true
     }
 
     if (uno == cuatro && cuatro == siete && uno != "") {
         if (eleccionJugador == uno ){
             console.log('ganastes')
+            victoria = true
         }else{
             console.log('perdiste')
         }
+        termino = true
     }
-    if (dos == cuatro && cuatro == ocho && dos != "") {
+
+    if (dos == cinco && cinco == ocho && dos != "") {
         if (eleccionJugador == dos ){
             console.log('ganastes')
+            victoria = true
         }else{
             console.log('perdiste')
         }
+        termino = true
     }
+
     if (tres == seis && seis == nueve && tres != "") {
         if (eleccionJugador == tres ){
             console.log('ganastes')
+            victoria = true
         }else{
             console.log('perdiste')
         }
+        termino = true
     }
-
 
     if (uno == cinco && cinco == nueve && uno != "") {
         if (eleccionJugador == uno ){
             console.log('ganastes')
+            victoria = true
         }else{
             console.log('perdiste')
         }
+        termino = true
     }
+
     if (tres == cinco && cinco == siete && tres != "") {
         if (eleccionJugador == tres ){
             console.log('ganastes')
+            victoria = true
         }else{
             console.log('perdiste')
         }
+        termino = true
     }
 
+    if (termino) {
+        for (const iterator of sectores) {
+            iterator.disabled = true
+        }
+        console.log(victoria
+            )
+        mensajeGanadorOPerdedor(victoria)
+    }
+}
+
+function mensajeGanadorOPerdedor(isVictoria) {
+    let mensajeGanador = $('.mensaje-final')
+    mensajeGanador.classList.remove('invisible')
+    if (isVictoria) {
+        mensajeGanador.classList.add('ganador')
+        mensajeGanador.childNodes[1].innerText = 'Has ganado ¡FELICITACIONES!'
+    }else{
+        mensajeGanador.classList.add('perdedor')
+        mensajeGanador.childNodes[1].innerText = 'Has perdido ¡SIGUE INTENTANDO!'
+    }
+    mensajeGanador.childNodes[3].onclick = ()=>{
+        location.reload()
+    }
+    
 }
