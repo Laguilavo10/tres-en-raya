@@ -34,25 +34,30 @@ function funcionMain(eleccion) {
 
                 validarSiGano(sectores, eleccion)
 
-                if (!terminoElJuego(sectores)) {
-                    while (aprovado == false){
-
-                        let random = Math.floor(Math.random() * 9)
-
-                        if (sectores[random].dataset.ocupado == 'false') {
-                            sectores[random].innerText = eleccionRival(eleccion)
-                            sectores[random].dataset.ocupado = 'true'
-                            aprovado = true
+                setTimeout(() => { //HACE QUE LA RESPUESTA DE LA MAQUINA SE DEMORE 0.7s
+                    if (!terminoElJuego(sectores)) {
+                        while (aprovado == false){
+    
+                            let random = Math.floor(Math.random() * 9)
+    
+                            if (sectores[random].dataset.ocupado == 'false') {
+                                sectores[random].innerText = eleccionRival(eleccion)
+                                sectores[random].dataset.ocupado = 'true'
+                                aprovado = true
+                            }
                         }
+                        validarSiGano(sectores, eleccion)
                     }
-                    validarSiGano(sectores, eleccion)
-                }
+                    
+                }, 700);
                 
                 
             }
         }
     }   
 }
+
+
 
 function quienInicia(sectores, eleccion) {
     let primerIntento = Math.floor(Math.random()*2)
@@ -66,10 +71,6 @@ function quienInicia(sectores, eleccion) {
     }
 }
 
-
-
-
-
 function eleccionRival(eleccionJugador) {
     if (eleccionJugador === '❌') {
         return '⭕'
@@ -77,7 +78,6 @@ function eleccionRival(eleccionJugador) {
         return '❌'
     }
 }
-
 
 function terminoElJuego(sectores) {
     let isEnd = sectores.every((a)=>a.dataset.ocupado == "true")
