@@ -34,7 +34,7 @@ function funcionMain(eleccion) {
 
                 validarSiGano(sectores, eleccion)
 
-                setTimeout(() => { //HACE QUE LA RESPUESTA DE LA MAQUINA SE DEMORE 0.7s
+                // setTimeout(() => { //HACE QUE LA RESPUESTA DE LA MAQUINA SE DEMORE 0.7s
                     if (!terminoElJuego(sectores)) {
                         while (aprovado == false){
     
@@ -49,7 +49,7 @@ function funcionMain(eleccion) {
                         validarSiGano(sectores, eleccion)
                     }
                     
-                }, 700);
+                // }, 700);
                 
                 
             }

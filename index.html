@@ -6,30 +6,57 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <link rel="shortcut icon" href="https://cdn-icons-png.flaticon.com/512/53/53654.png" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
     <title>Tres en raya</title>
 </head>
 <body>
+    <header>
+        <h1>Tic Tac Toe</h1>
+        <!-- <button><img src="https://img.icons8.com/ios-glyphs/30/null/user--v1.png"/></button> -->
+
+    </header>
+    
     <div class="mensaje-final invisible">
         <p></p>
         <button>Recargar</button>
     </div>
-    <div class="container-ttt">
-        <button class="sectores sector1" data-ocupado="false"></button>
-        <button class="sectores sector2" data-ocupado="false"></button>
-        <button class="sectores sector3" data-ocupado="false"></button>
-        <button class="sectores sector4" data-ocupado="false"></button>
-        <button class="sectores sector5" data-ocupado="false"></button>
-        <button class="sectores sector6" data-ocupado="false"></button>
-        <button class="sectores sector7" data-ocupado="false"></button>
-        <button class="sectores sector8" data-ocupado="false"></button>
-        <button class="sectores sector9" data-ocupado="false"></button>
-    </div>
+
+
     <div>
         <h3>Selecciona</h3>
         <div>
             <button id="circulo" >⭕</button>
             <button id="equis">❌</button>
         </div>
+    </div>
+    <section class="main-container">
+        <div class="container-ttt">
+            <button class="sectores sector1" data-ocupado="false"></button>
+            <button class="sectores sector2" data-ocupado="false"></button>
+            <button class="sectores sector3" data-ocupado="false"></button>
+            <button class="sectores sector4" data-ocupado="false"></button>
+            <button class="sectores sector5" data-ocupado="false"></button>
+            <button class="sectores sector6" data-ocupado="false"></button>
+            <button class="sectores sector7" data-ocupado="false"></button>
+            <button class="sectores sector8" data-ocupado="false"></button>
+            <button class="sectores sector9" data-ocupado="false"></button>
+        </div>
+    </section>
+    <div class="puntajes">
+        <h4>Puntos</h4>
+        <div class="puntajes-tabla">
+            <div class="">
+                <p>Jugador</p>
+                <p>1</p>
+            </div>
+            <div>
+                <p>PC</p>
+                <p>1</p>
+            </div>
+        </div>
+        <button>RESET</button>
     </div>
 
     <script src="./main.js"></script>
